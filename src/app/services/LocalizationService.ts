@@ -7,6 +7,110 @@ export interface ILocalizationService {
 
 export class LocalizationService implements ILocalizationService {
     dictionary = {
+        "pt-BR": {
+            "USE_IGNITION_SIGNAL_FROM_CAN_BUS": {
+                "label": "C1. Use o sinal de ignição vindo da CAN bus",
+                "tip": "Deve ser ativado em carros (desativado apenas para teste)"
+            },
+            "ORIGINAL_DISPLAY_PRESENT": {
+                "label": "C2. Tela Original (EMF-C) presente",
+                "tip": "Ativar quando você tiver o visor AEE2004 original (EMF-C) ou um sistema de telemática RNEG, RTx"
+            },
+            "MODIFY_217_WITH_CURRENT_SPEED":{
+                "label": "C3. Modificar o frame 217 incluindo a velocidade do carro",
+                "tip": "Quando seu carro não tem suporte para MATT, a velocidade do carro pode estar faltando no quadro 0x217"
+            },
+            "GENERATE_POPUP_FOR_DOOR_STATUS":{
+                "label": "C4. Gerar uma mensagem de informação de mudança de estado da porta ",
+                "tip": "Em alguns carros (como o 5008) não há mensagem exibida quando uma porta é aberta, ativar esta configuração adicionará esta mensagem"
+            },
+            "PANEL_iCOCKPIT":{
+                "label": "C5. Possui o  painel i-cockpit 3d",
+                "tip": "Ative se estiver usando o ESP32DualCan para por o painel icockpit do 3008 "
+            },
+            "HAS_RTC":{
+                "label": "C6. Informações RTC disponíveis (modulo RTC instalado)",
+                "tip": "Ative se sua placa tiver um módulo de relógio em tempo real (a placa precisa ser reiniciada após alterar esta configuração)"
+            },
+            "FUEL_TANK_CAPACITY_IN_LITERS": {
+                "label": "E1. Capacidade do tanque de combustível em litros (0-127 l)",
+                "tip": ""
+            },
+            "LANGUAGE": {
+                "label": "S1. Idioma do veículo",
+                "tip": "Normalmente: 308=60l 3008=53l RCZ=55l"
+            },
+            "DISTANCE_UNIT": {
+                "label": "S2. Unidade de distância",
+                "tip": ""
+            },
+            "CONSUMPTION_UNIT": {
+                "label": "S3. Unidade de consumo",
+                "tip": ""
+            },
+            "VOLUME_UNIT": {
+                "label": "S4. Unidade de volume",
+                "tip": ""
+            },
+            "TEMPERATURE_UNIT": {
+                "label": "S5. Unidade de temperatura",
+                "tip": ""
+            },
+            "AMBIENCE_LEVEL": {
+                "label": "S6. Nível de ambiente",
+                "tip": ""
+            },
+            "SOUND_HARMONY": {
+                "label": "S7. Harmonia sonora",
+                "tip": ""
+            },
+            "VIN_FOR_HEADUNIT": {
+                "label": "E1. VIN para a MATT e NAC",
+                "tip": "Enviamos este número VIN para a unidade principal (para evitar bipes anti-roubo)"
+            },
+            "DATETIME": {
+                "label": "E2. Data e hora",
+                "tip": ""
+            },
+            "DELETE_BTN": {
+                "label": "Excluir configuração",
+                "tip": ""
+            },
+            "RELOAD_BTN": {
+                "label": "Recarregar",
+                "tip": ""
+            },
+            "SAVE_BTN": {
+                "label": "Salvar",
+                "tip": ""
+            },
+            "UPLOAD_BTN": {
+                "label": "Enviar",
+                "tip": ""
+            },
+            "UPDATE_BTN": {
+                "label": "Atualizar",
+            },
+            "SETTINGS_BTN": {
+                "label": "Configurações",
+            },
+            "Settings": {
+                "label": "Configurações",
+            },
+            "OTA update": {
+                "label": "OTA update",
+                "tip": ""
+            },
+            "LANG_FR":{
+                "label": "Français",
+            },
+            "LANG_EN":{
+                "label": "English",
+            },
+            "LANG_pt-BR":{
+                "label": "Portugues Brasil",
+            }
+        }
         "en": {
             "USE_IGNITION_SIGNAL_FROM_CAN_BUS": {
                 "label": "C1. Use ignition signal from CAN bus",
@@ -102,6 +206,9 @@ export class LocalizationService implements ILocalizationService {
             },
             "LANG_EN":{
                 "label": "English",
+            },
+             "LANG_pt-BR":{
+                "label": "Brazilian Portuguese",
             }
         },
         "fr": {
