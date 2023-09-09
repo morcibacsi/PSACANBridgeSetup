@@ -110,7 +110,7 @@ export class LocalizationService implements ILocalizationService {
             "LANG_pt-BR":{
                 "label": "Portugues Brasil",
             }
-        }
+        },
         "en": {
             "USE_IGNITION_SIGNAL_FROM_CAN_BUS": {
                 "label": "C1. Use ignition signal from CAN bus",
