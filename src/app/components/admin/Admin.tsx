@@ -385,6 +385,7 @@ export class Admin extends Component<IAdminProps, IAdminState> {
                 </hgroup>
 
                 <select onChange={e => this.changeLanguage(e)} value={this.props.localizationService.GetLanguage()}>
+                    <option value="pt-BR">{this.props.localizationService.GetText('LANG_pt-BR')}</option>
                     <option value="en">{this.props.localizationService.GetText('LANG_EN')}</option>
                     <option value="fr">{this.props.localizationService.GetText('LANG_FR')}</option>
                 </select>
