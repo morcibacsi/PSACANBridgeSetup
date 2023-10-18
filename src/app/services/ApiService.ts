@@ -9,10 +9,29 @@ export interface IApiService {
     DeleteConfig(thenCallback: (_: Response) => any): Promise<BaseResponse>;
     SetTime(year: number, month: number, day: number, hour: number, minute: number, second: number, thenCallback: (_: Response) => any): Promise<BaseResponse>;
     Update(file: any, thenCallback: (_: Response) => any): Promise<BaseResponse>;
+    KeepAlive(thenCallback: (_: Response) => any): Promise<BaseResponse>;
 }
 
 export class ApiService implements IApiService {
     public constructor(private apiUrl: string) {
+        this.keepAliveTimer();
+    }
+
+    keepAliveTimer(): void {
+        setTimeout(() => {
+            this.KeepAlive((_: Response) => {
+                if (_.status == 200) {
+                    console.log("KeepAlive OK");
+                } else {
+                    console.log("KeepAlive failed");
+                }
+            })
+            .then((_: BaseResponse) => { })
+            .finally(() => {
+                this.keepAliveTimer();
+            });
+        }, 1000);
+
     }
 
     getRequest(method: string, body: string): RequestInit{
@@ -92,5 +111,14 @@ export class ApiService implements IApiService {
             thenCallback(_);
             return _.json();
         });
+    }
+
+    KeepAlive(thenCallback: (_: Response) => any): Promise<BaseResponse>
+    {
+        return fetch(this.apiUrl + '/api/keepalive', this.getRequest("GET", ""))
+            .then( (_: Response) => {
+                thenCallback(_);
+                return _.json();
+            });
     }
 }
