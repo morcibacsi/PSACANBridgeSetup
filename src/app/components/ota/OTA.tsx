@@ -42,20 +42,24 @@ export class OTA extends Component<IOTAProps, IOTAState> {
     render(props: IOTAProps, state: IOTAState): JSX.Element {
        return (
             <div>
-                <div class="columns level">
-                    <div class="column level-item has-text-centered">
+                <div class="header">
+                    <hgroup>
                         <h1>{this.props.localizationService.GetText("OTA update")}</h1>
-                    </div>
+                    </hgroup>
                 </div>
 
                 {this.state.loading &&
                 <progress></progress>
                 }
 
-                <div class="columns is-mobile">
+                <div class="settings" style='width: 443px'>
                     <form method='POST' action='/doUpdate' encType='multipart/form-data'>
                         <input type="file" name='update' accept=".bin" class="form-input file-input" onChange={this.onFileChange}/>
-                        <button type="button" onClick={(e) => this.buttonClick(e)} disabled={this.state.loading} aria-busy={this.state.loading}>{this.props.localizationService.GetText("UPLOAD_BTN")}</button>
+                        <div class="button-columns is-mobile">
+                            <div class="column is-one-third">
+                                <button type="button" onClick={(e) => this.buttonClick(e)} disabled={this.state.loading} aria-busy={this.state.loading}>{this.props.localizationService.GetText("UPLOAD_BTN")}</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

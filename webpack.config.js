@@ -10,6 +10,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ProgmemGenerator = require('./progmem-generator.js');
 
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 module.exports = (env, args) => {
     const isProduction = args && args['mode'] === 'production';
     console.log('');
@@ -45,20 +47,6 @@ module.exports = (env, args) => {
         module: {
             rules: [
                 {
-                    test: /\.(ts|tsx)$/,
-                    // eslint
-                    enforce: 'pre',
-                    use: [
-                        {
-                            options: {
-                                eslintPath: require.resolve('eslint'),
-                            },
-                            loader: require.resolve('eslint-loader'),
-                        },
-                    ],
-                    exclude: /node_modules/,
-                },
-                {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
                     use: [{
@@ -86,10 +74,11 @@ module.exports = (env, args) => {
                 },
                 {
                     test: /\.css$/i,
+                    sideEffects: true,
                     use: [
-                        MiniCssExtractPlugin.loader, 
-                        { loader: "style-loader" },
-                        { loader: "css-loader" },
+                            MiniCssExtractPlugin.loader, 
+                            { loader: "style-loader" },
+                            { loader: "css-loader" },
                         ],
                 },
                 {
@@ -109,23 +98,24 @@ module.exports = (env, args) => {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             },
-            contentBase: './dist',
-            publicPath: '/',
             compress: false,
             port: 3030,
             historyApiFallback: true,
             hot: true,
-            inline: true,
-            stats: 'normal',
-            clientLogLevel: 'error'
         },
-
+        
         plugins: [
             new webpack.EnvironmentPlugin({
                 NODE_ENV: isProduction ? 'production' : 'development',
                 DEBUG: !isProduction
             }),
 
+            new ESLintPlugin({
+                extensions: ['ts', 'tsx'],
+                exclude: [
+                    '/node_modules/',
+                ],
+            }),
             new CopyWebpackPlugin({
                 patterns: [
                     // static files to the site root folder (index and robots)

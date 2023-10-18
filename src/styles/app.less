@@ -1,31 +1,252 @@
 @import (inline) "normalize.css";
 
-.home-page {
-	text-align: center;
+    .home-page {
+        text-align: center;
 
-	h2 {
-		color: #2a7ea4;
-	}
+        h2 {
+            color: #2a7ea4;
+        }
 
-	ul {
-		text-align: left;
-	}
+        ul {
+            text-align: left;
+        }
 
-	img {
-		width: 4em;
-	}
-}
+        img {
+            width: 4em;
+        }
+    }
 
-.counter-value {
-	color: #59a42a;
-}
+    :root {
+        color-scheme: light dark;
+    }
 
-.tire-container {
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 10px;
-}
+    @media (prefers-color-scheme: light) {
+        :root {
+            --text-primary: #24292e;
+            --background: white;
+            --shadow: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px;
+        }
+    }
 
-.tire {
-    grid-template-columns: 30% 30% 30% !important;
-}
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --text-primary: white;
+            --background: #24292e;
+            --shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px 0px;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header {
+        display: flex;
+        justify-content: left;
+        margin-left: 40px;
+    }
+
+    .settings {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type=file] {
+        width: 97%;
+        margin-bottom: 15px;
+    }
+
+    input[type=text] {
+        width: 97%;
+        margin-bottom: 15px;
+    }
+
+    input[type=number] {
+        width: 97%;
+        margin-bottom: 15px;
+    }
+
+    select {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .columns {
+        width: 80%;
+
+        button {
+            margin-bottom: 15px;
+        }
+    }
+
+    .button-columns {
+        width: 80%;
+        button {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+
+    .datetime-setup {
+        display: flex;
+        justify-content: space-between;
+
+        .input-container {
+            flex-grow: 1;
+            input {
+                width: 95%;
+            }
+        }
+
+        .button-container {
+            flex-grow: 0;
+        }
+    }
+
+    .slider-checkbox
+    {
+        position: relative;
+        width: 80%;
+        margin-bottom: 15px;
+        position: relative;
+        input {
+            margin: 0px;
+            margin-top: 1px;
+            cursor: pointer;
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: 1;
+            top: 0px;
+            left: 0px;
+            background: red;
+            width: 40px;
+            height: 20px;
+            &:checked + .label {
+            &:before {
+                background-color: #1877c1;
+                content: "\2713";
+                padding-left: 6px;
+            }
+            &:after {
+                left: 21px;
+            }
+            }
+        }
+        .label {
+            position: relative;
+            padding-left: 46px;
+            &:before, &:after {
+                position: absolute;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                transition: background-color 0.3s, left 0.3s;
+            }
+            &:before {
+                content: "\2715";
+                color: #fff;
+                box-sizing: border-box;
+                font-family: 'FontAwesome', sans-serif;
+                padding-left: 23px;
+                font-size: 12px;
+                line-height: 20px;
+                background-color: #888;
+                left: 0px;
+                top: 0px;
+                height: 20px;
+                width: 40px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+            }
+            &:after {
+                content: "";
+                letter-spacing: 20px;
+                background: #fff;
+                left: 1px;
+                top: 1px;
+                height: 18px;
+                width: 18px;
+            }
+        }
+    }
+
+    /* Style the tab */
+    .tab {
+        overflow: hidden;
+        //border: 1px solid #ccc;
+        background-color: transparent;
+
+        .tablinks {
+            background-color: inherit;
+            float: left;
+            border-bottom: 1px solid #ccc;
+
+            //border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+
+        }
+    }
+
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+        background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+        background-color: #ccc;
+    }
+
+    .tooltip:before {
+        content: attr(data-tooltip); /* here's the magic */
+        position:absolute;
+
+        /* vertically center */
+        top:50%;
+        transform:translateY(-50%);
+
+        /* move to right */
+        left:100%;
+        margin-left:15px; /* and add a small left margin */
+
+        /* basic styles */
+        width:200px;
+        padding:10px;
+        border-radius:10px;
+        background:#000;
+        color: #fff;
+        text-align:center;
+
+        display:none; /* hide by default */
+      }
+
+    .tooltip:hover:before {
+        display:block;
+    }
+
+/**/

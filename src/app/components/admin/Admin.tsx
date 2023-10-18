@@ -93,13 +93,13 @@ export class Admin extends Component<IAdminProps, IAdminState> {
     getDateTime(datetime: Date)
     {
         return `${datetime.getFullYear()}-${`${datetime.getMonth() +
-            1}`.padStart(2, 0)}-${`${datetime.getDate() + 1}`.padStart(
+            1}`.padStart(2, '0')}-${`${datetime.getDate() + 1}`.padStart(
             2,
-            0
+            '0'
           )}T${`${datetime.getHours()}`.padStart(
             2,
-            0
-          )}:${`${datetime.getMinutes()}`.padStart(2, 0)}`;
+            '0'
+          )}:${`${datetime.getMinutes()}`.padStart(2, '0')}`;
     }
 
     handleTimeChange(event)
@@ -379,185 +379,194 @@ export class Admin extends Component<IAdminProps, IAdminState> {
     render(props: IAdminProps, state: IAdminState): JSX.Element {
        return (
             <div>
-                <hgroup>
-                    <h1>{this.props.localizationService.GetText('Settings')}</h1>
-                    <h2>{this.state.config.VERSION}</h2>
-                </hgroup>
-
-                <select onChange={e => this.changeLanguage(e)} value={this.props.localizationService.GetLanguage()}>
-                    <option value="pt-BR">{this.props.localizationService.GetText('LANG_pt-BR')}</option>
-                    <option value="en">{this.props.localizationService.GetText('LANG_EN')}</option>
-                    <option value="fr">{this.props.localizationService.GetText('LANG_FR')}</option>
-                </select>
-                <form autocomplete="off">
-                    <CheckBox
-                        id='USE_IGNITION_SIGNAL_FROM_CAN_BUS'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.USE_IGNITION_SIGNAL_FROM_CAN_BUS}
-                        onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
-                    </CheckBox>
-
-                    <CheckBox
-                        id='ORIGINAL_DISPLAY_PRESENT'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.ORIGINAL_DISPLAY_PRESENT}
-                        onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
-                    </CheckBox>
-
-                    <CheckBox
-                        id='MODIFY_217_WITH_CURRENT_SPEED'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.MODIFY_217_WITH_CURRENT_SPEED}
-                        onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
-                    </CheckBox>
-
-                    <CheckBox
-                        id='GENERATE_POPUP_FOR_DOOR_STATUS'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.GENERATE_POPUP_FOR_DOOR_STATUS}
-                        onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
-                    </CheckBox>
-
-                    <CheckBox
-                        id='HAS_RTC'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.HAS_RTC}
-                        onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
-                    </CheckBox>
-
-                    <NumberInput
-                        id='FUEL_TANK_CAPACITY_IN_LITERS'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.FUEL_TANK_CAPACITY_IN_LITERS}
-                        onchange={(id, value) => this.handleInputChange(id, value)}>
-                    </NumberInput>
-
-                    <Select
-                        id='LANGUAGE'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.LANGUAGE}
-                        data={[
-                            { id: 0, name: 'French'},
-                            { id: 1, name: 'English'},
-                            { id: 2, name: 'German'},
-                            { id: 3, name: 'Spanish'},
-                            { id: 4, name: 'Italian'},
-                            { id: 5, name: 'Portuguese'},
-                            { id: 6, name: 'Dutch'},
-                            { id: 7, name: 'Greek'},
-                            { id: 8, name: 'Brazilian Portuguese'},
-                            { id: 9, name: 'Polish'},
-                            { id: 10, name: 'Traditional Chinese'},
-                            { id: 11, name: 'Simplified Chinese'},
-                            { id: 12, name: 'Turkish'},
-                            { id: 13, name: 'Japanese'},
-                            { id: 14, name: 'Russian'},
-                            { id: 15, name: 'Czech'},
-                            { id: 16, name: 'Croatian'},
-                            { id: 17, name: 'Hungarian'},
-                            { id: 18, name: 'Arabic'},
-                            { id: 19, name: 'Bulgarian'},
-                            { id: 20, name: 'Korean'},
-                            { id: 21, name: 'Danish'},
-                            { id: 22, name: 'Estonian'},
-                            { id: 23, name: 'Farsi'},
-                            { id: 24, name: 'Finnish'},
-                            { id: 25, name: 'Hebrew'},
-                            { id: 26, name: 'Norwegian'},
-                            { id: 27, name: 'Romanian'},
-                            { id: 28, name: 'Serbian'},
-                            { id: 29, name: 'Swedish'},
-                            { id: 30, name: 'Ukrainian'},
-                            { id: 31, name: 'Vietnamese'}
-                            ]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='DISTANCE_UNIT'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.DISTANCE_UNIT}
-                        data={[{ id: 0, name: 'km'}, { id: 1, name: 'miles'}]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='CONSUMPTION_UNIT'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.CONSUMPTION_UNIT}
-                        data={[{ id: 0, name: 'l/100 km'}, { id: 1, name: 'km/l'}]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='VOLUME_UNIT'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.VOLUME_UNIT}
-                        data={[{ id: 0, name: 'liter'}, { id: 1, name: 'gallon'}]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='TEMPERATURE_UNIT'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.TEMPERATURE_UNIT}
-                        data={[{ id: 0, name: '°C'}, { id: 1, name: '°F'}]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='AMBIENCE_LEVEL'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.AMBIENCE_LEVEL}
-                        data={[
-                            { id: 0, name: 'Level 0'},
-                            { id: 1, name: 'Level 1'},
-                            { id: 2, name: 'Level 2'},
-                            { id: 3, name: 'Level 3'},
-                            { id: 4, name: 'Level 4'},
-                            { id: 5, name: 'Level 5'},
-                            { id: 6, name: 'Level 6'},
-                            { id: 7, name: 'Invalid'},
-                        ]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <Select
-                        id='SOUND_HARMONY'
-                        localizationService={this.props.localizationService}
-                        value={this.state.config.SOUND_HARMONY}
-                        data={[
-                            { id: 0, name: 'Harmony 1'},
-                            { id: 1, name: 'Harmony 2'},
-                            { id: 2, name: 'Harmony 3'},
-                            { id: 3, name: 'Harmony 4'},
-                        ]}
-                        onchange={(i,v) => this.handleInputChange(i, v)}>
-                    </Select>
-
-                    <LabelInput
-                        id='VIN_FOR_HEADUNIT'
-                        localizationService={this.props.localizationService}
-                        minLength={17}
-                        maxLength={17}
-                        value={this.getVinAsString(this.state.config.VIN_FOR_HEADUNIT)}
-                        onchange={(id, value) => this.handleVinChange(id, value)}>
-                    </LabelInput>
-
-                    {this.state.config.HAS_RTC &&
-                    <div class="columns is-mobile">
+                <div class="header">
+                    <hgroup>
+                        <h1>{this.props.localizationService.GetText('Settings')}</h1>
+                        <h2>{this.state.config.VERSION}</h2>
+                    </hgroup>
+                </div>
+                <div class="settings">
+                    <div class="columns">
                         <div class="column is-one-second">
-                            <label>{props.localizationService.GetText("DATETIME")} {props.localizationService.GetTip("DATETIME") ? <span><a href="#" data-tooltip={props.localizationService.GetTip("DATETIME")}><ToolTipIcon fill='#f00' width='1rem'/></a></span> : ''}</label>
-                        </div>
-                        <div class="column is-one-second">
-                            <input type="datetime-local" id="DATETIME" name="DATETIME" value={this.state.config.DATETIME} onChange={this.handleTimeChange} ></input>
-                            <button type="button" onClick={(e) => this.setTime()}>Set time</button>
+                            <select onChange={e => this.changeLanguage(e)} value={this.props.localizationService.GetLanguage()}>
+                                <option value="pt-BR">{this.props.localizationService.GetText('LANG_pt-BR')}</option>
+                                <option value="en">{this.props.localizationService.GetText('LANG_EN')}</option>
+                                <option value="fr">{this.props.localizationService.GetText('LANG_FR')}</option>
+                            </select>
                         </div>
                     </div>
-                    }
+                    <form autocomplete="off">
+                        <CheckBox
+                            id='USE_IGNITION_SIGNAL_FROM_CAN_BUS'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.USE_IGNITION_SIGNAL_FROM_CAN_BUS}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
 
-                    <section>
+                        <CheckBox
+                            id='ORIGINAL_DISPLAY_PRESENT'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.ORIGINAL_DISPLAY_PRESENT}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
+
+                        <CheckBox
+                            id='MODIFY_217_WITH_CURRENT_SPEED'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.MODIFY_217_WITH_CURRENT_SPEED}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
+
+                        <CheckBox
+                            id='GENERATE_POPUP_FOR_DOOR_STATUS'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.GENERATE_POPUP_FOR_DOOR_STATUS}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
+
+                        <CheckBox
+                            id='HAS_RTC'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.HAS_RTC}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
+
+                        <NumberInput
+                            id='FUEL_TANK_CAPACITY_IN_LITERS'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.FUEL_TANK_CAPACITY_IN_LITERS}
+                            onchange={(id, value) => this.handleInputChange(id, value)}>
+                        </NumberInput>
+
+                        <Select
+                            id='LANGUAGE'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.LANGUAGE}
+                            data={[
+                                { id: 0, name: 'French'},
+                                { id: 1, name: 'English'},
+                                { id: 2, name: 'German'},
+                                { id: 3, name: 'Spanish'},
+                                { id: 4, name: 'Italian'},
+                                { id: 5, name: 'Portuguese'},
+                                { id: 6, name: 'Dutch'},
+                                { id: 7, name: 'Greek'},
+                                { id: 8, name: 'Brazilian Portuguese'},
+                                { id: 9, name: 'Polish'},
+                                { id: 10, name: 'Traditional Chinese'},
+                                { id: 11, name: 'Simplified Chinese'},
+                                { id: 12, name: 'Turkish'},
+                                { id: 13, name: 'Japanese'},
+                                { id: 14, name: 'Russian'},
+                                { id: 15, name: 'Czech'},
+                                { id: 16, name: 'Croatian'},
+                                { id: 17, name: 'Hungarian'},
+                                { id: 18, name: 'Arabic'},
+                                { id: 19, name: 'Bulgarian'},
+                                { id: 20, name: 'Korean'},
+                                { id: 21, name: 'Danish'},
+                                { id: 22, name: 'Estonian'},
+                                { id: 23, name: 'Farsi'},
+                                { id: 24, name: 'Finnish'},
+                                { id: 25, name: 'Hebrew'},
+                                { id: 26, name: 'Norwegian'},
+                                { id: 27, name: 'Romanian'},
+                                { id: 28, name: 'Serbian'},
+                                { id: 29, name: 'Swedish'},
+                                { id: 30, name: 'Ukrainian'},
+                                { id: 31, name: 'Vietnamese'}
+                                ]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='DISTANCE_UNIT'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.DISTANCE_UNIT}
+                            data={[{ id: 0, name: 'km'}, { id: 1, name: 'miles'}]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='CONSUMPTION_UNIT'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.CONSUMPTION_UNIT}
+                            data={[{ id: 0, name: 'l/100 km'}, { id: 1, name: 'km/l'}]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='VOLUME_UNIT'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.VOLUME_UNIT}
+                            data={[{ id: 0, name: 'liter'}, { id: 1, name: 'gallon'}]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='TEMPERATURE_UNIT'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.TEMPERATURE_UNIT}
+                            data={[{ id: 0, name: '°C'}, { id: 1, name: '°F'}]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='AMBIENCE_LEVEL'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.AMBIENCE_LEVEL}
+                            data={[
+                                { id: 0, name: 'Level 0'},
+                                { id: 1, name: 'Level 1'},
+                                { id: 2, name: 'Level 2'},
+                                { id: 3, name: 'Level 3'},
+                                { id: 4, name: 'Level 4'},
+                                { id: 5, name: 'Level 5'},
+                                { id: 6, name: 'Level 6'},
+                                { id: 7, name: 'Invalid'},
+                            ]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <Select
+                            id='SOUND_HARMONY'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.SOUND_HARMONY}
+                            data={[
+                                { id: 0, name: 'Harmony 1'},
+                                { id: 1, name: 'Harmony 2'},
+                                { id: 2, name: 'Harmony 3'},
+                                { id: 3, name: 'Harmony 4'},
+                            ]}
+                            onchange={(i,v) => this.handleInputChange(i, v)}>
+                        </Select>
+
+                        <LabelInput
+                            id='VIN_FOR_HEADUNIT'
+                            localizationService={this.props.localizationService}
+                            minLength={17}
+                            maxLength={17}
+                            value={this.getVinAsString(this.state.config.VIN_FOR_HEADUNIT)}
+                            onchange={(id, value) => this.handleVinChange(id, value)}>
+                        </LabelInput>
+
+                        {this.state.config.HAS_RTC &&
                         <div class="columns is-mobile">
+                            <div class="column is-one-second">
+                                <label>{props.localizationService.GetText("DATETIME")} {props.localizationService.GetTip("DATETIME") ? <span><a href="#" data-tooltip={props.localizationService.GetTip("DATETIME")}><ToolTipIcon fill='#f00' width='1rem'/></a></span> : ''}</label>
+                            </div>
+                            <div class="column is-one-second datetime-setup">
+                                <div class="input-container">
+                                    <input type="datetime-local" id="DATETIME" name="DATETIME" value={this.state.config.DATETIME} onChange={this.handleTimeChange} ></input>
+                                </div>
+                                <div class="button-container">
+                                    <button type="button" onClick={(e) => this.setTime()}>Set time</button>
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+                        <div class="button-columns is-mobile">
                             <div class="column is-one-third">
                                 <button type="button" class="button is-info is-fullwidth" disabled={this.state.loading} aria-busy={this.state.loading} onClick={(e) => this.deleteConfig()}>{this.props.localizationService.GetText('DELETE_BTN')}</button>
                             </div>
@@ -565,14 +574,12 @@ export class Admin extends Component<IAdminProps, IAdminState> {
                                 <button type="button" class="button is-info is-fullwidth" disabled={this.state.loading} aria-busy={this.state.loading} onClick={(e) => this.loadConfig()}>{this.props.localizationService.GetText('RELOAD_BTN')}</button>
                             </div>
                             <div class="column is-one-third">
-                            </div>
-                            <div class="column is-one-third">
                                 <button type="button" class="button is-info is-fullwidth" aria-busy={this.state.saving} onClick={(e) => this.saveConfig()}>{this.props.localizationService.GetText('SAVE_BTN')}</button>
                             </div>
                         </div>
-                    </section>
-                    <div></div>
-                </form>
+                        <div></div>
+                    </form>
+                </div>
             </div>
         );
     }

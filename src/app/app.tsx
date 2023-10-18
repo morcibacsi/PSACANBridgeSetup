@@ -9,7 +9,6 @@ import {OTA} from './components/ota/OTA';
 import {IWebSocketService, WebSocketService} from './services/WebSocketService'
 import {IApiService, ApiService} from './services/ApiService'
 
-import '@picocss/pico/css/pico.min.css';
 import { ILocalizationService, LocalizationService } from './services/LocalizationService';
 
 interface IAppProps {
@@ -57,9 +56,7 @@ export class App extends Component<IAppProps, IAppState> {
 
     otaUpdatePage(): JSX.Element {
         return (
-            <div>
                 <OTA apiService={this.apiService} localizationService={this.localizationService}></OTA>
-            </div>
         );
     }
 

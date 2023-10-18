@@ -26,14 +26,15 @@ export class Header extends Component<IHeaderProps, IHeaderState> {
 	render(props: IHeaderProps, state: IHeaderState): JSX.Element {
 		return (
             <div>
-                <div>
-                    {
+                <div class="tab">
+                        {
                         /*
                         <a href="#" role="button" onClick={(e) => this.props.onButtonClick(e, 2)}>Log</a>
-                    <a href="#" role="button" onClick={(e) => this.props.onButtonClick(e, 1)}>Display</a>
-                */}
-                        <a href="#" role="button" style="margin-right: 2px;" onClick={(e) => this.props.onButtonClick(e, 1)}>{this.props.localizationService.GetText("UPDATE_BTN")}</a>
-                        <a href="#" role="button" style="margin-right: 2px;" onClick={(e) => this.props.onButtonClick(e, 3)}>{this.props.localizationService.GetText("SETTINGS_BTN")}</a>
+                        <a href="#" role="button" onClick={(e) => this.props.onButtonClick(e, 1)}>Display</a>
+                        */
+                        }
+                        <button href="#" class="tablinks" role="button" style="margin-right: 20px;" onClick={(e) => this.props.onButtonClick(e, 1)}>{this.props.localizationService.GetText("UPDATE_BTN")}</button>
+                        <button href="#" class="tablinks" role="button" style="margin-right: 2px;" onClick={(e) => this.props.onButtonClick(e, 3)}>{this.props.localizationService.GetText("SETTINGS_BTN")}</button>
                 </div>
             </div>
         );

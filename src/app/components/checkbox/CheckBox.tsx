@@ -24,12 +24,12 @@ export class CheckBox extends Component<ICheckBoxProps, ICheckBoxState> {
 
     render(props: ICheckBoxProps, state: ICheckBoxState): JSX.Element {
         return (
-            <fieldset>
-            <label for={this.props.id}>
+            <section class="slider-checkbox">
                 <input type="checkbox" id={this.props.id} name={this.props.id} role="switch" checked={this.props.value} onChange={e => this.handleChange()}/>
-                {props.localizationService.GetText(this.props.id)} { props.localizationService.GetTip(this.props.id) ? <span><a href="#" data-tooltip={props.localizationService.GetTip(this.props.id)}><ToolTipIcon fill='#f00' width='1rem'/></a></span> : '' }
-            </label>
-            </fieldset>
+                <label for={this.props.id} class="label">
+                    {props.localizationService.GetText(this.props.id)} { props.localizationService.GetTip(this.props.id) ? <span class="tooltip" data-tooltip={props.localizationService.GetTip(this.props.id)}><ToolTipIcon fill='#f00' width='1rem'/></span> : '' }
+                </label>
+            </section>
         );
     }
 };

@@ -27,7 +27,7 @@ export class NumberInput extends Component<INumberInputProps, INumberInputState>
         return (
             <div class="columns is-mobile">
                 <div class="column is-one-second">
-                    <label>{props.localizationService.GetText(this.props.id)} {props.localizationService.GetTip(this.props.id) ? <span><a href="#" data-tooltip={props.localizationService.GetTip(this.props.id)}><ToolTipIcon fill='#f00' width='1rem'/></a></span> : ''}</label>
+                    <label>{props.localizationService.GetText(this.props.id)} {props.localizationService.GetTip(this.props.id) ? <span class="tooltip" data-tooltip={props.localizationService.GetTip(this.props.id)}><ToolTipIcon fill='#f00' width='1rem'/></span> : ''}</label>
                 </div>
                 <div class="column is-one-second">
                     <input type="text" name={this.props.id} value={this.props.value} onKeyUp={e => this.handleChange(e)}/>
