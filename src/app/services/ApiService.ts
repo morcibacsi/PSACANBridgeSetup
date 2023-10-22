@@ -10,6 +10,7 @@ export interface IApiService {
     SetTime(year: number, month: number, day: number, hour: number, minute: number, second: number, thenCallback: (_: Response) => any): Promise<BaseResponse>;
     Update(file: any, thenCallback: (_: Response) => any): Promise<BaseResponse>;
     KeepAlive(thenCallback: (_: Response) => any): Promise<BaseResponse>;
+    Reboot(thenCallback: (_: Response) => any): Promise<BaseResponse>;
 }
 
 export class ApiService implements IApiService {
@@ -116,6 +117,15 @@ export class ApiService implements IApiService {
     KeepAlive(thenCallback: (_: Response) => any): Promise<BaseResponse>
     {
         return fetch(this.apiUrl + '/api/keepalive', this.getRequest("GET", ""))
+            .then( (_: Response) => {
+                thenCallback(_);
+                return _.json();
+            });
+    }
+
+    Reboot(thenCallback: (_: Response) => any): Promise<BaseResponse>
+    {
+        return fetch(this.apiUrl + '/api/reboot', this.getRequest("GET", ""))
             .then( (_: Response) => {
                 thenCallback(_);
                 return _.json();

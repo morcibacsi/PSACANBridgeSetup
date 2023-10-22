@@ -84,6 +84,10 @@ export class LocalizationService implements ILocalizationService {
                 "label": "Salvar",
                 "tip": ""
             },
+            "REBOOT_BTN": {
+                "label": "Reboot",
+                "tip": ""
+            },
             "UPLOAD_BTN": {
                 "label": "Enviar",
                 "tip": ""
@@ -184,6 +188,10 @@ export class LocalizationService implements ILocalizationService {
                 "label": "Save",
                 "tip": ""
             },
+            "REBOOT_BTN": {
+                "label": "Reboot",
+                "tip": ""
+            },
             "UPLOAD_BTN": {
                 "label": "Upload",
                 "tip": ""
@@ -282,6 +290,10 @@ export class LocalizationService implements ILocalizationService {
             },
             "SAVE_BTN": {
                 "label": "Enregistrer",
+                "tip": ""
+            },
+            "REBOOT_BTN": {
+                "label": "Reboot",
                 "tip": ""
             },
             "UPLOAD_BTN": {

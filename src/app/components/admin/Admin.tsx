@@ -183,6 +183,12 @@ export class Admin extends Component<IAdminProps, IAdminState> {
         }
     }
 
+    reboot() {
+        this.props.apiService.Reboot(() => {}).then((_: BaseResponse) => {
+            alert(_.success);
+        });
+    }
+
     setTime()
     {
         let year = Number(this.state.config.DATETIME.substring(0, 4));
@@ -575,6 +581,9 @@ export class Admin extends Component<IAdminProps, IAdminState> {
                             </div>
                             <div class="column is-one-third">
                                 <button type="button" class="button is-info is-fullwidth" aria-busy={this.state.saving} onClick={(e) => this.saveConfig()}>{this.props.localizationService.GetText('SAVE_BTN')}</button>
+                            </div>
+                            <div class="column is-one-third">
+                                <button type="button" class="button is-info is-fullwidth" aria-busy={this.state.saving} onClick={(e) => this.reboot()}>{this.props.localizationService.GetText('REBOOT_BTN')}</button>
                             </div>
                         </div>
                         <div></div>
