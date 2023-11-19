@@ -29,8 +29,12 @@ export class LocalizationService implements ILocalizationService {
                 "tip": "Ative se estiver usando o ESP32DualCan para por o painel icockpit do 3008 "
             },
             "HAS_RTC":{
-                "label": "C6. Informações RTC disponíveis (modulo RTC instalado)",
+                "label": "C5. Informações RTC disponíveis (modulo RTC instalado)",
                 "tip": "Ative se sua placa tiver um módulo de relógio em tempo real (a placa precisa ser reiniciada após alterar esta configuração)"
+            },
+            "REPLACE_REMOTE_MODE_BTN_WITH_SRC":{
+                "label": "C6. Replace MODE with SRC on the remote stalk",
+                "tip": "Enable if you would like to replace the MODE button with SRC on the remote stalk"
             },
             "FUEL_TANK_CAPACITY_IN_LITERS": {
                 "label": "E1. Capacidade do tanque de combustível em litros (0-127 l)",
@@ -136,6 +140,10 @@ export class LocalizationService implements ILocalizationService {
                 "label": "C5. RTC info available",
                 "tip": "Enable if your board has a real time clock module (board needs to be restarted after changing this setting)"
             },
+            "REPLACE_REMOTE_MODE_BTN_WITH_SRC":{
+                "label": "C6. Replace MODE with SRC on the remote stalk",
+                "tip": "Enable if you would like to replace the MODE button with SRC on the remote stalk"
+            },
             "FUEL_TANK_CAPACITY_IN_LITERS": {
                 "label": "E1. Fuel tank capacity in liters (0-127 l)",
                 "tip": ""
@@ -239,6 +247,10 @@ export class LocalizationService implements ILocalizationService {
             "HAS_RTC":{
                 "label": "C5. RTC info available",
                 "tip": "Enable if your board has a real time clock module (board needs to be restarted after changing this setting)"
+            },
+            "REPLACE_REMOTE_MODE_BTN_WITH_SRC":{
+                "label": "C6. Replace MODE with SRC on the remote stalk",
+                "tip": "Enable if you would like to replace the MODE button with SRC on the remote stalk"
             },
             "FUEL_TANK_CAPACITY_IN_LITERS": {
                 "label": "E1. Capacité du réservoir de carburant en litre (0-127 l)",

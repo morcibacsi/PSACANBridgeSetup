@@ -437,6 +437,13 @@ export class Admin extends Component<IAdminProps, IAdminState> {
                             onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
                         </CheckBox>
 
+                        <CheckBox
+                            id='REPLACE_REMOTE_MODE_BTN_WITH_SRC'
+                            localizationService={this.props.localizationService}
+                            value={this.state.config.REPLACE_REMOTE_MODE_BTN_WITH_SRC}
+                            onchange={(i,v) => this.handleCheckBoxChange(i, v)}>
+                        </CheckBox>
+
                         <NumberInput
                             id='FUEL_TANK_CAPACITY_IN_LITERS'
                             localizationService={this.props.localizationService}

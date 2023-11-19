@@ -12,6 +12,7 @@ export interface Config {
     FUEL_TANK_CAPACITY_IN_LITERS: number;
     VIN_FOR_HEADUNIT: number[];
     GENERATE_POPUP_FOR_DOOR_STATUS: boolean;
+    REPLACE_REMOTE_MODE_BTN_WITH_SRC: boolean;
     HAS_RTC: boolean;
     DATETIME: string;
     VERSION: string;
